@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Site</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="top">
+        <p><b>Como foram a féria</b></p>
+    </div>
+    <div class="mid">
+        <div id="carousel">
+            <div id="image-container">
+                <img id="image" src="img/normarl.png" alt="Imagem 1">
+                <p id="caption">Inicio das férias só felcidade</p>
+            </div>
+        </div>
+        <div class="buttons">
+            <button onclick="prevImage()">⬅ Anterior</button>
+            <button onclick="nextImage()">Próximo ➡</button>
+        </div>
+    </div>
+    <div class="bot">
+        <p class="fim">Área de reclamações: ligue para 0800 para ter suas reclamações ignoradas</p>
+    </div>
+    <script>
+        const images = [
+            { src: "img/normarl.png", caption: "Inicio das férias só felicidade" },
+            { src: "img/raiva.png", caption: "Meio das ferias começo a jogar com pessoas que não sabem de nada" },
+            { src: "img/sad.png", caption: "Final das férias não fiz nada que tinha planejado para fazer" }
+        ];
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            document.getElementById("image").src = images[currentIndex].src;
+            document.getElementById("caption").textContent = images[currentIndex].caption;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateCarousel();
+        }
+    </script>
+</body>
+</html>
